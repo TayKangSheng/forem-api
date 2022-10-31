@@ -27,13 +27,6 @@ type alias Model =
     }
 
 
-foremApiConfig : ForemApi.Config
-foremApiConfig =
-    ForemApi.Config
-        "https://dev.to"
-        [ Http.header "accept" "application/vnd.forem.api-v1+json" ]
-
-
 main : Program () Model Msg
 main =
     Browser.element
@@ -47,6 +40,12 @@ main =
 init : flags -> ( Model, Cmd Msg )
 init _ =
     let
+        foremApiConfig : ForemApi.Config
+        foremApiConfig =
+            ForemApi.Config
+                "https://dev.to"
+                [ Http.header "accept" "application/vnd.forem.api-v1+json" ]
+
         articlesQueryParameters : ForemApi.Articles.QueryParameters
         articlesQueryParameters =
             ForemApi.Articles.blankQueryParameters
